@@ -41,6 +41,13 @@ dependencies:
   # Explicitly include firebase_auth_web with a compatible version
   firebase_auth_web: ^5.9.5
   shared_preferences: ^2.3.0
+  cloud_firestore: ^4.7.1
+  firebase_messaging: ^14.0.0
+  flutter_local_notifications: ^13.0.0
+  cloud_functions: ^4.1.0
+  
+
+
   
   # Added dart_js_interop package for better JS interop
   js: ^0.6.7
@@ -86,6 +93,30 @@ flutter:
     - assets/dysphagia_icon.svg
     - assets/symptoms_icon.svg
     - assets/disclaimer_icon.svg
+    - assets/images/background.png
+    - assets/images/chat.png
+    - assets/images/kid.png
+    - assets/images/oldman.png
+    - assets/food/custard.png
+    - assets/food/liquidised_shicken_soup.png
+    - assets/food/mageu.png
+    - assets/food/pureed_vegetable_curry.png
+    - assets/food/smooth_maize_porride.png
+    - assets/icons/Account.svg
+    - assets/icons/arrow1.svg
+    - assets/icons/framework_h.svg
+    - assets/icons/framework.svg
+    - assets/icons/home.svg
+    - assets/icons/notification.svg
+    - assets/icons/profile.svg
+    - assets/icons/testing.svg
+    - assets/icons/top_menu.svg
+    - assets/images/background2.png
+    - assets/images/logo_new.png
+    - assets/images/iddsi_new.png
+    
+    
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

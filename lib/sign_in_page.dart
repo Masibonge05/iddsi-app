@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'auth.dart';
 
@@ -18,6 +19,13 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscurePassword = true;
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _passwordFocus = FocusNode();
+
+  // Color palette from design system
+  static const Color primaryColor = Color(0xFF0094D4); // #0094d4
+  static const Color secondaryColor = Color(0xFF01224F); // #01224f
+  static const Color accentColor = Color(0xFF98DAF8); // #98daf8
+  static const Color highlightColor = Color(0xFF00529A); // #00529a
+  static const Color backgroundColor = Color(0xFFF0F5F7); // #f0f5f7
 
   bool _isValidEmail(String value) {
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
@@ -45,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       await AuthService().signIn(email: email, password: password);
-        Navigator.pushReplacementNamed(context, '/home'); 
+        Navigator.pushReplacementNamed(context, '/personalInfo'); 
     } catch (e) {
       setState(() {
         _errorMessage = e.toString().replaceAll('Exception: ', '');
@@ -80,59 +88,67 @@ class _LoginPageState extends State<LoginPage> {
     final screenHeight = screenSize.height;
     final screenWidth = screenSize.width;
     final horizontalPadding = screenWidth * 0.08;
-    final verticalPadding = screenHeight * 0.03;
-    final buttonHeight = screenHeight * 0.07;
-    final titleFontSize = screenWidth * 0.09;
-    final subtitleFontSize = screenWidth * 0.06;
-    final buttonFontSize = screenWidth * 0.05;
-    final regularFontSize = screenWidth * 0.04;
 
     return Scaffold(
       body: Stack(
         children: [
+          // Background image
           Positioned.fill(
             child: Image.asset(
-              'assets/background.png',
+              'assets/images/background.png',
               fit: BoxFit.cover,
-            ),
-          ),
-          Positioned.fill(
-            child: Container(
-              color: Colors.blue.shade50.withOpacity(0.8),
             ),
           ),
           SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: horizontalPadding,
-                  vertical: verticalPadding,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                 child: Form(
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: screenHeight * 0.06),
+                      SizedBox(height: screenHeight * 0.08),
+                      
+                      // Logo
+                      SizedBox(
+                        width: screenWidth * 0.3,
+                        height: screenWidth * 0.3,
+                        child: Image.asset(
+                          'assets/images/logo_new.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      
+                      SizedBox(height: screenHeight * 0.04),
+                      
+                      // Title - should be responsive but match design proportions
                       Text(
                         'Login here',
                         style: TextStyle(
-                          fontSize: titleFontSize,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue.shade800,
+                          fontFamily: 'Poppins',
+                          fontSize: screenWidth * 0.08, // Responsive sizing
+                          fontWeight: FontWeight.w800, // ExtraBold
+                          color: secondaryColor,
                         ),
                       ),
-                      SizedBox(height: screenHeight * 0.02),
+                      
+                      SizedBox(height: screenHeight * 0.015),
+                      
+                      // Subtitle - should be in primary blue color
                       Text(
-                        'Welcome back to\nthe IDDSI App!',
-                        textAlign: TextAlign.center,
+                        'Welcome Back',
                         style: TextStyle(
-                          fontSize: subtitleFontSize,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                          fontSize: screenWidth * 0.05, // Responsive sizing  
+                          fontWeight: FontWeight.w700, // Bold
+                          color: highlightColor, // Should be primary blue, not secondary
                         ),
                       ),
-                      SizedBox(height: screenHeight * 0.05),
+                      
+                      SizedBox(height: screenHeight * 0.06),
+                      
+                      // Error message
                       if (_errorMessage.isNotEmpty)
                         Container(
                           padding: EdgeInsets.all(screenWidth * 0.03),
@@ -140,42 +156,53 @@ class _LoginPageState extends State<LoginPage> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.red.shade100,
-                            borderRadius:
-                                BorderRadius.circular(screenWidth * 0.02),
+                            borderRadius: BorderRadius.circular(12),
                             border: Border.all(color: Colors.red.shade300),
                           ),
                           child: Text(
                             _errorMessage,
                             style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400, // Regular
                               color: Colors.red.shade900,
-                              fontSize: regularFontSize,
+                              height: 24/16, // Line height 24px
                             ),
                           ),
                         ),
+                      
+                      // Email field
                       Container(
+                        width: 300, // Fixed width for input fields
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(screenWidth * 0.08),
-                          border:
-                              Border.all(color: Colors.blue.shade800, width: 2),
-                          color: Colors.blue.shade50,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: primaryColor, width: 1), // Reduced border width
+                          color: Colors.white,
                         ),
                         child: TextFormField(
                           controller: _emailController,
                           focusNode: _emailFocus,
                           keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(fontSize: regularFontSize),
+                          style: const TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: highlightColor,
+                            height: 24/16,
+                          ),
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            hintText: 'Enter your email',
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: screenWidth * 0.05,
-                              vertical: screenHeight * 0.02,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
                             ),
                             border: InputBorder.none,
                             labelStyle: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontSize: regularFontSize,
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: secondaryColor.withOpacity(0.7),
+                              height: 24/16,
                             ),
                           ),
                           onChanged: (value) {
@@ -196,39 +223,49 @@ class _LoginPageState extends State<LoginPage> {
                           },
                         ),
                       ),
-                      SizedBox(height: screenHeight * 0.025),
+                      
+                      SizedBox(height: screenHeight * 0.02),
+                      
+                      // Password field
                       Container(
+                        width: 300, // Fixed width for input fields
                         decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(screenWidth * 0.08),
-                          border:
-                              Border.all(color: Colors.blue.shade800, width: 2),
-                          color: Colors.blue.shade50,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: primaryColor, width: 1), // Reduced border width
+                          color: Colors.white,
                         ),
                         child: TextFormField(
                           controller: _passwordController,
                           focusNode: _passwordFocus,
                           obscureText: _obscurePassword,
-                          style: TextStyle(fontSize: regularFontSize),
+                          style: const TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: highlightColor,
+                            height: 24/16,
+                          ),
                           decoration: InputDecoration(
                             labelText: 'Password',
-                            hintText: 'Enter your password',
-                            contentPadding: EdgeInsets.symmetric(
-                              horizontal: screenWidth * 0.05,
-                              vertical: screenHeight * 0.02,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 12,
                             ),
                             border: InputBorder.none,
                             labelStyle: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontSize: regularFontSize,
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: secondaryColor.withOpacity(0.7),
+                              height: 24/16,
                             ),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscurePassword
                                     ? Icons.visibility_off
                                     : Icons.visibility,
-                                color: Colors.blue.shade800,
-                                size: screenWidth * 0.06,
+                                color: highlightColor.withOpacity(0.6),
+                                size: screenWidth * 0.055,
                               ),
                               onPressed: _togglePasswordVisibility,
                             ),
@@ -242,62 +279,84 @@ class _LoginPageState extends State<LoginPage> {
                           onFieldSubmitted: (_) => _signIn(),
                         ),
                       ),
+                      
                       SizedBox(height: screenHeight * 0.02),
+                      
+                      // Forgot password
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, '/forgotPassword');
                           },
-                          child: Text(
+                          child: const Text(
                             'Forgot your password?',
                             style: TextStyle(
-                              color: Colors.blue.shade800,
-                              fontWeight: FontWeight.w500,
-                              fontSize: regularFontSize,
+                              fontFamily: 'Poppins',
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: secondaryColor,
+                              height: 24/16,
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(height: screenHeight * 0.03),
+                      
+                      SizedBox(height: screenHeight * 0.04),
+                      
+                      // Sign in button
                       SizedBox(
-                        width: double.infinity,
-                        height: buttonHeight,
+                        width: 300, // Fixed width for button
+                        height: 48, // Fixed height for button
                         child: ElevatedButton(
                           onPressed: _isLoading ? null : _signIn,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue.shade800,
+                            backgroundColor: primaryColor,
                             foregroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(screenWidth * 0.08),
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            disabledBackgroundColor: Colors.blue.shade300,
+                            disabledBackgroundColor: primaryColor.withOpacity(0.6),
+                            elevation: 0, // Removed elevation
                           ),
                           child: _isLoading
                               ? const CircularProgressIndicator(
-                                  color: Colors.white)
-                              : Text(
-                                  'Sign In',
+                                  color: Colors.white,
+                                  strokeWidth: 2,
+                                )
+                              : const Text(
+                                  'Sign in',
                                   style: TextStyle(
-                                    fontSize: buttonFontSize,
-                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white,
+                                    height: 24/18,
                                   ),
                                 ),
                         ),
                       ),
-                      SizedBox(height: screenHeight * 0.02),
+                      
+                      SizedBox(height: screenHeight * 0.03),
+                      
+                      // Create account link
                       TextButton(
                         onPressed: () =>
                             Navigator.pushNamed(context, '/register'),
-                        child: Text(
-                          "Don't have an account?",
+                        child: const Text(
+                          "Create an account",
                           style: TextStyle(
-                            fontSize: regularFontSize,
-                            color: Colors.blue.shade800,
+                            fontFamily: 'Poppins',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: secondaryColor,
+                            height: 24/16,
+                            decoration: TextDecoration.underline,
                           ),
                         ),
-                      )
+                      ),
+                      
+                      SizedBox(height: screenHeight * 0.02),
                     ],
                   ),
                 ),

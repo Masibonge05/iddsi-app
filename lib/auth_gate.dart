@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'sign_in_page.dart';
-import 'home_page.dart'; // Replace this with your actual home screen
+import 'personal_info.dart'; // Personal info page for first-time setup
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -18,10 +18,10 @@ class AuthGate extends StatelessWidget {
         }
 
         if (snapshot.hasData) {
-          return const IDDSIHomePage(); // Replace with your real home screen widget
+          return const IDDSIPersonalInfoPage(); // User is signed in, show personal info form
         }
 
-        return const LoginPage(); // Your login screen
+        return const LoginPage(); // User not signed in, show login screen
       },
     );
   }

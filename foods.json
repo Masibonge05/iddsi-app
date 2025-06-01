@@ -1,0 +1,22 @@
+[
+  { "name": "Water", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Apple Juice", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Cold drink", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Full Cream Milk", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Coffee", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Tea", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Fresubin (original)", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Fresubin (Protein energy)", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Peptamin prebio", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Fresubin juice", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Supportan", "iddsi_level": "0 Thin", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Mageu", "iddsi_level": "3 Moderate Thick", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Yogi Sip (Danone)", "iddsi_level": "3 Moderate Thick", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Clover Custard", "iddsi_level": "3 Moderate Thick", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Sir Juice Mango", "iddsi_level": "1 Slightly Thick", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Purity (Peach) – 6 months", "iddsi_level": "3 Liquidized", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Purity (Vegetable and beef) – 7 months", "iddsi_level": "4 Pureed", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Mashed Banana", "iddsi_level": "4 Pureed", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Mashed Potato (Smash)", "iddsi_level": "4 Pureed", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" },
+  { "name": "Mashed Papaya", "iddsi_level": "5 Minced & Moist", "description": "", "average_rating": 0, "comments": [], "updated_at": "2025-05-22T00:00:00Z" }
+]

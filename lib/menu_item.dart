@@ -17,7 +17,7 @@ class MenuItem extends StatelessWidget {
     this.isSelected = false, // Default to false
   });
 
-  @override
+  @override         
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
